@@ -10,7 +10,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false"
       )
       .then((response) => {
         // handle success
@@ -26,10 +26,13 @@ function App() {
       });
   }, []);
 
+  // search coin
+
   const searchCoin = (e) => {
     setSearch(e.target.value);
   };
 
+  // filter coins based on search
   const filteredCoins = coins.filter((coin) =>
     coin.name.toLowerCase().includes(search.toLowerCase())
   );

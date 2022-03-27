@@ -62,13 +62,13 @@
 
 .coin-percent{
     width: 80px;
-    
+    font-weight: 400;
 }
 
 .red{
-    color: red
+    color: #FF1700;
 }
 
 .green{
-    color: green;
+    color: #4E9F3D;
 }
