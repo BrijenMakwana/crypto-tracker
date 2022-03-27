@@ -1,4 +1,5 @@
 import React from "react";
+import "./Coin.css";
 
 export default function Coin(props) {
   return (
@@ -12,6 +13,16 @@ export default function Coin(props) {
         <div className="coin-data">
           <p className="coin-price">$ {props.price}</p>
           <p className="coin-volume">$ {props.volume.toLocaleString()}</p>
+          {props.priceChange < 0 ? (
+            <p className="coin-percent red">{props.priceChange.toFixed(2)}%</p>
+          ) : (
+            <p className="coin-percent green">
+              {props.priceChange.toFixed(2)}%
+            </p>
+          )}
+          <p className="coin-marketcap">
+            Mkt Cap: $ {props.marketCap.toLocaleString()}
+          </p>
         </div>
       </div>
     </div>

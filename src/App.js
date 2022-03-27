@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="coin-app">
       <div className="coin-search">
-        <h1 className="coin-text">Search A currency</h1>
+        <h1 className="coin-text">Crypto Tracker</h1>
         <form>
           <input
             type="text"
@@ -54,8 +54,10 @@ function App() {
             name={coin.name}
             image={coin.image}
             symbol={coin.symbol}
-            volume={coin.market_cap}
+            volume={coin.total_volume}
             price={coin.current_price}
+            priceChange={coin.price_change_percentage_24h}
+            marketCap={coin.market_cap}
           />
         );
       })}
