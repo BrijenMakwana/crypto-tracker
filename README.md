@@ -1,71 +1,48 @@
-# Getting Started with Create React App
+# Crypto Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="https://github.com/BrijenMakwana/crypto-tracker/blob/main/public/logo512.png" width="200" height="200" style="border-radius:50px;">
 
-## Available Scripts
+Access this site at [cryptocurrency-tracking.vercel.app](https://cryptocurrency-tracking.vercel.app)
 
-In the project directory, you can run:
+## Table of Content:
 
-### `npm start`
+- [About The App](#about-the-app)
+- [Screenshots](#screenshots)
+- [Technologies](#technologies-and-tools)
+- [Setup](#setup)
+- [Approach](#approach)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## About The App
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Crypto Tracker is an cryptocurrency tracking website created with React. You can find current values of all cryptocurrency out there. You can find details like value of one unit, total volume, market cap and much more. Market cap is one of the most popular metrics in the industry that is used to gauge the value of an asset. You can use this website to track all cryptocurrency.
 
-### `npm test`
+## Screenshots
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![App Screenshot](https://github.com/BrijenMakwana/crypto-tracker/blob/main/public/screenshot_1.png)
+![App Screenshot](https://github.com/BrijenMakwana/crypto-tracker/blob/main/public/screenshot_2.png)
 
-### `npm run build`
+## Technologies and Tools
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React
+- Javascript
+- CSS styling
+- Axios
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Download or clone the repository
 
-### `npm run eject`
+2. Run below command to install all the dependency
+```
+npm i
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Run below command to start the project
+```
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Approach
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+I have used [coingecko](https://www.coingecko.com/en/api/documentation) API to get all cryptocurrency data. Axios is used to call the api. All the data stored in a state. I have created a custom component called coin that display all the crypto data in a row. Then I have used javascript map function to display all the data from that state in coin component.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# crypto-tracker
