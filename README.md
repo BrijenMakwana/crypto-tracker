@@ -14,7 +14,7 @@ Access this site at [cryptocurrency-tracking.vercel.app](https://cryptocurrency-
 
 ## About The App
 
-Crypto Tracker is an cryptocurrency tracking website created with React. You can find current values of all cryptocurrency out there. You can find details like value of one unit, total volume, market cap and much more. Market cap is one of the most popular metrics in the industry that is used to gauge the value of an asset. You can use this website to track all cryptocurrency.
+Crypto Tracker is an cryptocurrency tracking website created with React. You can find current values of all cryptocurrency out there. You can find details like value of one unit, total volume, market cap and much more. Market cap is one of the most popular metrics in the industry that is used to gauge the value of an asset. You can use this website to track all cryptocurrency. It also allows you to search for a specific cryptocurrency.
 
 ## Screenshots
 
@@ -45,4 +45,5 @@ npm start
 ## Approach
 
 I have used [coingecko](https://www.coingecko.com/en/api/documentation) API to get all cryptocurrency data. Axios is used to call the api. All the data stored in a state. I have created a custom component called coin that display all the crypto data in a row. Then I have used javascript map function to display all the data from that state in coin component.
+I also implemented search functionality, which is created with a input component. State will be filtered based on the user search input.
 
