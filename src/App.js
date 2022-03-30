@@ -38,9 +38,9 @@ function App() {
   );
 
   return (
-    <div className="coin-app">
+    <div className="main-container">
       <div className="coin-search">
-        <h1 className="coin-text">Crypto Tracker</h1>
+        <h1 className="main-heading">Cryptocurrency Tracking</h1>
         <form>
           <input
             type="text"
@@ -50,20 +50,22 @@ function App() {
           ></input>
         </form>
       </div>
-      {filteredCoins.map((coin) => {
-        return (
-          <Coin
-            key={coin.id}
-            name={coin.name}
-            image={coin.image}
-            symbol={coin.symbol}
-            volume={coin.total_volume}
-            price={coin.current_price}
-            priceChange={coin.price_change_percentage_24h}
-            marketCap={coin.market_cap}
-          />
-        );
-      })}
+      <div className="coins-container">
+        {filteredCoins.map((coin) => {
+          return (
+            <Coin
+              key={coin.id}
+              name={coin.name}
+              image={coin.image}
+              symbol={coin.symbol}
+              volume={coin.total_volume}
+              price={coin.current_price}
+              priceChange={coin.price_change_percentage_24h}
+              marketCap={coin.market_cap}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
