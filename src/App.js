@@ -6,6 +6,21 @@ import Coin from "./components/Coin";
 function App() {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
+  const availableCurrency = [
+    {
+      id: "1",
+      name: "US Dollar",
+      value: "usd",
+    },
+    { id: "2", name: "Indonesian Dollar", value: "idr" },
+    { id: "3", name: "New Taiwan Dollar", value: "twd" },
+    { id: "4", name: "Euro", value: "eur" },
+    { id: "5", name: "South Korean Won", value: "krw" },
+    { id: "6", name: "Japanese Yen", value: "jpy" },
+    { id: "7", name: "Russian Ruble", value: "rub" },
+    { id: "8", name: "Chinese Yuan", value: "cny" },
+  ];
+
   const [currency, setCurrency] = useState("usd");
 
   useEffect(() => {
@@ -63,14 +78,11 @@ function App() {
             onChange={handleChange}
             className="dropdown-menu"
           >
-            <option value="usd">US Dollar</option>
-            <option value="idr">Indonesian Dollar</option>
-            <option value="twd">New Taiwan Dollar</option>
-            <option value="eur">Euro</option>
-            <option value="krw">South Korean Won</option>
-            <option value="jpy">Japanese Yen</option>
-            <option value="rub">Russian Ruble</option>
-            <option value="cny">Chinese Yuan</option>
+            {availableCurrency.map((item) => (
+              <option value={item.value} key={item.id}>
+                {item.name}
+              </option>
+            ))}
           </select>
         </div>
       </div>
