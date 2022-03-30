@@ -1,7 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Coin.css";
 
 export default function Coin(props) {
+  useEffect(() => {
+    switch (props.currency) {
+      case "usd":
+        setCurrencySymbol("$");
+        break;
+      case "idr":
+        setCurrencySymbol("IDR");
+        break;
+      case "twd":
+        setCurrencySymbol("NT");
+        break;
+      case "eur":
+        setCurrencySymbol("€");
+        break;
+      case "krw":
+        setCurrencySymbol("₩");
+        break;
+      case "jpy":
+        setCurrencySymbol("¥");
+        break;
+      case "rub":
+        setCurrencySymbol("RUB");
+        break;
+      case "cny":
+        setCurrencySymbol("CN¥");
+        break;
+      default:
+        break;
+    }
+  }, [props.currency]);
+
+  const [currencySymbol, setCurrencySymbol] = useState("");
+
   return (
     <div className="coin-container">
       <img src={props.image} alt="crypto" />
@@ -9,10 +42,14 @@ export default function Coin(props) {
       <p className="coin-data">{props.symbol}</p>
 
       <p className="coin-heading">Price</p>
-      <p className="coin-data">$ {props.price}</p>
+      <p className="coin-data">
+        {currencySymbol} {props.price}
+      </p>
 
       <p className="coin-heading">Volume</p>
-      <p className="coin-data">$ {props.volume.toLocaleString()}</p>
+      <p className="coin-data">
+        {currencySymbol} {props.volume.toLocaleString()}
+      </p>
 
       <p className="coin-heading">Price Change</p>
       {props.priceChange < 0 ? (
@@ -22,7 +59,9 @@ export default function Coin(props) {
       )}
 
       <p className="coin-heading">Market Cap</p>
-      <p className="coin-data">$ {props.marketCap.toLocaleString()}</p>
+      <p className="coin-data">
+        {currencySymbol} {props.marketCap.toLocaleString()}
+      </p>
     </div>
   );
 }

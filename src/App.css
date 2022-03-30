@@ -57,3 +57,27 @@ body{
   width: 80%;
   justify-content: center;
 }
+
+.coin-options{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 80%;
+  margin-left: 200px;
+  margin-bottom: 30px;
+}
+
+.coin-dropdown{
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  align-items: center;
+  font-weight: bold;
+
+}
+
+.dropdown-menu{
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
