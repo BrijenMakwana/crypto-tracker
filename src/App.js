@@ -5,6 +5,7 @@ import Coin from "./components/Coin";
 
 function App() {
   const [coins, setCoins] = useState([]);
+  const [trendingCoins, setTrendingCoins] = useState([]);
   const [search, setSearch] = useState("");
   const availableCurrency = [
     {
@@ -23,10 +24,10 @@ function App() {
 
   const [currency, setCurrency] = useState("usd");
 
-  useEffect(() => {
+  const getCoinsMarket = () => {
     axios
       .get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=250&page=1&sparkline=false`
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=%20market_cap_desc&per_page=250&page=1&sparkline=false`
       )
       .then((response) => {
         // handle success
@@ -39,6 +40,28 @@ function App() {
       .then(function () {
         // always executed
       });
+  };
+
+  const getTrandingCoins = () => {
+    axios
+      .get(`https://api.coingecko.com/api/v3/search/trending`)
+      .then((response) => {
+        // handle success
+        setTrendingCoins(response.data.coins);
+        console.log(response.data.coins);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  };
+
+  useEffect(() => {
+    getCoinsMarket();
+    getTrandingCoins();
   }, [currency]);
 
   // search coin
