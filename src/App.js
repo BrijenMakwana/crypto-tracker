@@ -2,10 +2,11 @@ import "./App.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Coin from "./components/Coin";
+import BarChart from "./components/BarChart";
 
 function App() {
   const [coins, setCoins] = useState([]);
-  const [trendingCoins, setTrendingCoins] = useState([]);
+  const [chartData, setChartData] = useState();
   const [search, setSearch] = useState("");
   const availableCurrency = [
     {
@@ -24,8 +25,8 @@ function App() {
 
   const [currency, setCurrency] = useState("usd");
 
-  const getCoinsMarket = () => {
-    axios
+  const getCoinsMarket = async () => {
+    await axios
       .get(
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=%20market_cap_desc&per_page=250&page=1&sparkline=false`
       )
@@ -42,12 +43,28 @@ function App() {
       });
   };
 
-  const getTrandingCoins = () => {
-    axios
-      .get(`https://api.coingecko.com/api/v3/search/trending`)
+  const getTrendingCoins = async () => {
+    await axios
+      .get("https://api.coingecko.com/api/v3/search/trending")
       .then((response) => {
         // handle success
-        setTrendingCoins(response.data.coins);
+        // set chart dat
+        setChartData({
+          labels: response.data.coins.map((data) => data.item.name),
+          datasets: [
+            {
+              label: "Top Trending Coins Market Cap",
+              data: response.data.coins.map(
+                (data) => data.item.market_cap_rank
+              ),
+              backgroundColor: ["#40916c", "#fff"],
+              borderColor: "#000",
+              borderWidth: 1,
+              color: "##fff",
+            },
+          ],
+        });
+        // setTrendingCoins();
         console.log(response.data.coins);
       })
       .catch(function (error) {
@@ -61,7 +78,7 @@ function App() {
 
   useEffect(() => {
     getCoinsMarket();
-    getTrandingCoins();
+    getTrendingCoins();
   }, [currency]);
 
   // search coin
@@ -93,6 +110,8 @@ function App() {
           ></input>
         </form>
       </div>
+      {chartData && <BarChart data={chartData} />}
+
       <div className="coin-options">
         <div className="coin-dropdown">
           Slect Currency
