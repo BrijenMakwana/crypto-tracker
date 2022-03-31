@@ -6,7 +6,7 @@ import { Chart as ChartJS } from "chart.js/auto";
 export default function BarChart(props) {
   return (
     <div className="chart-container">
-      <Bar data={props.data} options={{ fontColor: "#fff" }} />
+      <Bar data={props.data} />
     </div>
   );
 }

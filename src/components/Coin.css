@@ -9,7 +9,16 @@
     width: 300px;
     border-radius: 30px;
     font-size: 1rem;
-   
+    transition: transform 1s;
+    cursor: pointer;
+
+}
+
+.coin-container:hover{
+    transform:scale(1.3);
+    z-index: 1;
+    background-color: #95d5b2;
+    border: 1px solid #000;
 }
 
 img{
@@ -26,7 +35,6 @@ img{
 }
 
 .coin-data{
-    
     margin-top: 10px;
 }
 
@@ -37,3 +45,4 @@ img{
 .green{
     color: #4E9F3D;
 }
+
