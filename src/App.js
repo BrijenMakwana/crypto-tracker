@@ -9,46 +9,37 @@ function App() {
   const [chartData, setChartData] = useState();
   const [search, setSearch] = useState("");
   const availableCurrency = [
+    { id: "1", name: "Indian Rupees", value: "inr" },
     {
-      id: "1",
+      id: "2",
       name: "US Dollar",
       value: "usd",
     },
-    { id: "2", name: "Indonesian Dollar", value: "idr" },
-    { id: "3", name: "New Taiwan Dollar", value: "twd" },
-    { id: "4", name: "Euro", value: "eur" },
-    { id: "5", name: "South Korean Won", value: "krw" },
-    { id: "6", name: "Japanese Yen", value: "jpy" },
-    { id: "7", name: "Russian Ruble", value: "rub" },
-    { id: "8", name: "Chinese Yuan", value: "cny" },
+    { id: "3", name: "Indonesian Dollar", value: "idr" },
+    { id: "4", name: "New Taiwan Dollar", value: "twd" },
+    { id: "5", name: "Euro", value: "eur" },
+    { id: "6", name: "South Korean Won", value: "krw" },
+    { id: "7", name: "Japanese Yen", value: "jpy" },
+    { id: "8", name: "Russian Ruble", value: "rub" },
+    { id: "9", name: "Chinese Yuan", value: "cny" },
   ];
 
-  const [currency, setCurrency] = useState("usd");
+  const availableSorting = [
+    { id: "1", name: "Name", value: "name" },
+    { id: "2", name: "Price", value: "current_price" },
+    { id: "3", name: "Volume", value: "total_volume" },
+    { id: "4", name: "Market Cap", value: "market_cap" },
+  ];
 
-  const getCoinsMarket = async () => {
-    await axios
-      .get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=%20market_cap_desc&per_page=250&page=1&sparkline=false`
-      )
-      .then((response) => {
-        // handle success
-        setCoins(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
-  };
+  const [currency, setCurrency] = useState("inr");
+  const [sort, setSort] = useState("market_cap");
 
   const getTrendingCoins = async () => {
     await axios
       .get("https://api.coingecko.com/api/v3/search/trending")
       .then((response) => {
         // handle success
-        // set chart dat
+        // set chart data
         setChartData({
           labels: response.data.coins.map((data) => data.item.name),
           datasets: [
@@ -64,8 +55,6 @@ function App() {
             },
           ],
         });
-        // setTrendingCoins();
-        console.log(response.data.coins);
       })
       .catch(function (error) {
         // handle error
@@ -77,7 +66,21 @@ function App() {
   };
 
   useEffect(() => {
-    getCoinsMarket();
+    axios
+      .get(
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&per_page=250&page=1&sparkline=false`
+      )
+      .then((response) => {
+        // handle success
+        setCoins(response.data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
     getTrendingCoins();
   }, [currency]);
 
@@ -92,13 +95,40 @@ function App() {
     setCurrency(e.target.value);
   };
 
+  const handleChangeSort = (e) => {
+    console.log(e.target.value);
+    setSort(e.target.value);
+  };
+
   // filter coins based on search
   const filteredCoins = coins.filter((coin) =>
     coin.name.toLowerCase().includes(search.toLowerCase())
   );
 
+  // sort
+  switch (sort) {
+    case "name":
+      filteredCoins.sort((a, b) => (a.name > b.name ? 1 : -1));
+      break;
+    case "current_price":
+      filteredCoins.sort((a, b) =>
+        a.current_price < b.current_price ? 1 : -1
+      );
+      break;
+    case "total_volume":
+      filteredCoins.sort((a, b) => (a.total_volume < b.total_volume ? 1 : -1));
+      break;
+    case "market_cap":
+      filteredCoins.sort((a, b) => (a.market_cap < b.market_cap ? 1 : -1));
+      break;
+
+    default:
+      break;
+  }
+
   return (
     <div className="main-container">
+      {/* search box */}
       <div className="coin-search">
         <h1 className="main-heading">Cryptocurrency Tracking</h1>
         <form>
@@ -110,8 +140,10 @@ function App() {
           ></input>
         </form>
       </div>
+      {/* chart */}
       {chartData && <BarChart data={chartData} />}
 
+      {/* dropdown menus */}
       <div className="coin-options">
         <div className="coin-dropdown">
           Slect Currency
@@ -127,8 +159,24 @@ function App() {
             ))}
           </select>
         </div>
+
+        <div className="coin-dropdown">
+          Sort By
+          <select
+            value={sort}
+            onChange={handleChangeSort}
+            className="dropdown-menu"
+          >
+            {availableSorting.map((item) => (
+              <option value={item.value} key={item.id}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
+      {/* list of coins */}
       <div className="coins-container">
         {filteredCoins.map((coin) => {
           return (

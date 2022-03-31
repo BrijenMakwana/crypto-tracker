@@ -28,6 +28,9 @@ export default function Coin(props) {
       case "cny":
         setCurrencySymbol("CN¥");
         break;
+      case "inr":
+        setCurrencySymbol("Rs.");
+        break;
       default:
         break;
     }

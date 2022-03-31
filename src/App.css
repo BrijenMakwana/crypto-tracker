@@ -63,7 +63,7 @@ body{
   flex-direction: row;
   justify-content: flex-start;
   width: 80%;
-  margin-left: 200px;
+  margin-left: 170px;
   margin-bottom: 30px;
   margin-top: 50px;
 }
@@ -72,9 +72,9 @@ body{
   display: flex;
   flex-direction: column;
   color: #000;
-  align-items: center;
+  /* align-items: center; */
   font-weight: bold;
-
+  margin-left: 20px;
 }
 
 .dropdown-menu{
