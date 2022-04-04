@@ -1,0 +1,12 @@
+.coin-chart{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body{
+    background-image: linear-gradient(to right, #fff , #52b788);
+  }

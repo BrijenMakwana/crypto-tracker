@@ -2,11 +2,10 @@ import "./HomeScreen.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Coin from "../components/Coin";
-import BarChart from "../components/BarChart";
 
 function HomeScreen() {
   const [coins, setCoins] = useState([]);
-  const [chartData, setChartData] = useState();
+
   const [search, setSearch] = useState("");
   const availableCurrency = [
     { id: "1", name: "Indian Rupees", value: "inr" },
@@ -34,37 +33,6 @@ function HomeScreen() {
   const [currency, setCurrency] = useState("inr");
   const [sort, setSort] = useState("market_cap");
 
-  const getTrendingCoins = async () => {
-    await axios
-      .get("https://api.coingecko.com/api/v3/search/trending")
-      .then((response) => {
-        // handle success
-        // set chart data
-        setChartData({
-          labels: response.data.coins.map((data) => data.item.name),
-          datasets: [
-            {
-              label: "Top Trending Coins Market Cap",
-              data: response.data.coins.map(
-                (data) => data.item.market_cap_rank
-              ),
-              backgroundColor: ["#40916c", "#fff"],
-              borderColor: "#000",
-              borderWidth: 1,
-              color: "##fff",
-            },
-          ],
-        });
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
-  };
-
   useEffect(() => {
     axios
       .get(
@@ -81,7 +49,6 @@ function HomeScreen() {
       .then(function () {
         // always executed
       });
-    getTrendingCoins();
   }, [currency]);
 
   // search coin
@@ -140,8 +107,6 @@ function HomeScreen() {
           ></input>
         </form>
       </div>
-      {/* chart */}
-      {chartData && <BarChart data={chartData} />}
 
       {/* dropdown menus */}
       <div className="coin-options">

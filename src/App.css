@@ -6,4 +6,6 @@
   color: #000;
   
 }
-
+body{
+  background-image: linear-gradient(to right, #fff , #52b788);
+}
