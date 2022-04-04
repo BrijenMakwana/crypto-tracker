@@ -43,7 +43,7 @@ export default function Coin(props) {
   return (
     <div
       className="coin-container"
-      onClick={() => navigate(`/Coin/${props.name}`)}
+      onClick={() => navigate(`/Coin/${props.id}`)}
     >
       <img src={props.image} alt="crypto" />
       <h1 className="coin-name">{props.name}</h1>

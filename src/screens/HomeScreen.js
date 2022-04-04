@@ -40,6 +40,7 @@ function HomeScreen() {
       )
       .then((response) => {
         // handle success
+        console.log(response.data);
         setCoins(response.data);
       })
       .catch(function (error) {
@@ -146,6 +147,7 @@ function HomeScreen() {
         {filteredCoins.map((coin) => {
           return (
             <Coin
+              id={coin.id}
               key={coin.id}
               name={coin.name}
               image={coin.image}

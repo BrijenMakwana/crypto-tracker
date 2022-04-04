@@ -6,11 +6,12 @@ import "./CoinGraph.css";
 
 function CoinGraph() {
   const [chartData, setChartData] = useState();
+  let params = useParams();
 
-  const getPrices = async () => {
-    await axios
+  useEffect(() => {
+    axios
       .get(
-        "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1"
+        `https://api.coingecko.com/api/v3/coins/${params.id}/market_chart?vs_currency=usd&days=1`
       )
       .then((response) => {
         // handle success
@@ -37,14 +38,7 @@ function CoinGraph() {
       .then(function () {
         // always executed
       });
-  };
-
-  let params = useParams();
-
-  useEffect(() => {
-    // getTrendingCoins();
-    getPrices();
-  }, []);
+  }, [params.id]);
   return (
     <div className="coin-chart">
       {/* chart */}
