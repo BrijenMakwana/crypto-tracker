@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Coin.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Coin(props) {
   useEffect(() => {
@@ -37,9 +38,13 @@ export default function Coin(props) {
   }, [props.currency]);
 
   const [currencySymbol, setCurrencySymbol] = useState("");
+  let navigate = useNavigate();
 
   return (
-    <div className="coin-container">
+    <div
+      className="coin-container"
+      onClick={() => navigate(`/Coin/${props.name}`)}
+    >
       <img src={props.image} alt="crypto" />
       <h1 className="coin-name">{props.name}</h1>
       <p className="coin-data">{props.symbol}</p>
