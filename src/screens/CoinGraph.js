@@ -46,7 +46,7 @@ function CoinGraph() {
   return (
     <div className="coin-chart">
       {/* chart */}
-      <h1 className="graph-title">Price Variation in last 24hr</h1>
+      <h1 className="graph-title">{params.id} Price Variation in last 24hr</h1>
       {chartData && <BarChart data={chartData} />}
       <p className="back-btn" onClick={() => navigate(-1)}>
         Go Back
