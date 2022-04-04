@@ -30,7 +30,7 @@ function HomeScreen() {
     { id: "4", name: "Market Cap", value: "market_cap" },
   ];
 
-  const [currency, setCurrency] = useState("inr");
+  const [currency, setCurrency] = useState("usd");
   const [sort, setSort] = useState("market_cap");
 
   useEffect(() => {

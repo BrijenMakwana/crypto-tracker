@@ -7,6 +7,12 @@
     flex-direction: column;
 }
 
-body{
-    background-image: linear-gradient(to right, #fff , #52b788);
+.graph-title{
+    margin: 70px 0px;
+}
+.back-btn{
+    font-size: 2rem;
+    padding: 10;
+    cursor: pointer;
+    margin-top: 20px;
   }
