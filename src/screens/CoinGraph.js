@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import BarChart from "../components/BarChart";
+import LineChart from "../components/LineChart";
 import "./CoinGraph.css";
 import moment from "moment";
 
@@ -47,7 +47,7 @@ function CoinGraph() {
     <div className="coin-chart">
       {/* chart */}
       <h1 className="graph-title">{params.id} Price Variation in last 24hr</h1>
-      {chartData && <BarChart data={chartData} />}
+      {chartData && <LineChart data={chartData} />}
       <p className="back-btn" onClick={() => navigate(-1)}>
         Go Back
       </p>
