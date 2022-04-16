@@ -112,7 +112,7 @@ function HomeScreen() {
       {/* dropdown menus */}
       <div className="coin-options">
         <div className="coin-dropdown">
-          Slect Currency
+          Select Currency
           <select
             value={currency}
             onChange={handleChange}
