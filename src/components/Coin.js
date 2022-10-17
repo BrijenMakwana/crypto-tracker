@@ -61,9 +61,9 @@ export default function Coin(props) {
 
       <p className="coin-heading">Price Change</p>
       {props.priceChange < 0 ? (
-        <p className="coin-data red">{props?.priceChange.toFixed(2)}%</p>
+        <p className="coin-data red">{props?.priceChange}%</p>
       ) : (
-        <p className="coin-data green">{props?.priceChange.toFixed(2)}%</p>
+        <p className="coin-data green">{props?.priceChange}%</p>
       )}
 
       <p className="coin-heading">Market Cap</p>
