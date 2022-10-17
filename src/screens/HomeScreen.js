@@ -144,7 +144,7 @@ function HomeScreen() {
 
       {/* list of coins */}
       <div className="coins-container">
-        {filteredCoins.map((coin) => {
+        { coins && filteredCoins.map((coin) => {
           return (
             <Coin
               id={coin.id}
